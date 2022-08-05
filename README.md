@@ -17,24 +17,22 @@
 
 ### Association
 
-- has_many :product
-- has_many :order
-- has_many :address
+- has_many :products
+- has_many :orders
 
 ## products テーブル
 
-| Column          | Type       | Options                        |
-|-----------------|------------|--------------------------------|
-| user            | references | null: false, foreign_key: true |
-| product_name    | string     | null: false                    |
-| description     | string     | null: false                    |
-| price           | string     | null: false                    |
-| image           | string     | null: false                    |
-| category        | integer    | null: false                    |
-| condition       | integer    | null: false                    |
-| delivery_charge | integer    | null: false                    |
-| prefecture      | integer    | null: false                    |
-| delivery_days   | integer    | null: false                    |
+| Column             | Type       | Options                        |
+|--------------------|------------|--------------------------------|
+| user               | references | null: false, foreign_key: true |
+| product_name       | string     | null: false                    |
+| description        | text       | null: false                    |
+| price              | integer    | null: false                    |
+| category_id        | integer    | null: false                    |
+| condition_id       | integer    | null: false                    |
+| delivery_charge_id | integer    | null: false                    |
+| prefecture_id      | integer    | null: false                    |
+| delivery_days_id   | integer    | null: false                    |
 
 
 ### Association
@@ -62,18 +60,17 @@
 
 ## addresses テーブル
 
-| Column       | Type       | Options                        |
-|--------------|------------|--------------------------------|
-| user         | references | null: false, foreign_key: true |
-| post_code    | string     | null: false                    |
-| prefecture   | integer    | null: false                    |
-| city         | string     | null: false                    |
-| house_number | string     | null: false                    |
-| building     | string     |                                |
-| phone_number | string     | null: false                    |
+| Column        | Type       | Options                        |
+|---------------|------------|--------------------------------|
+| order         | references | null: false, foreign_key: true |
+| post_code     | string     | null: false                    |
+| prefecture_id | integer    | null: false                    |
+| city          | string     | null: false                    |
+| house_number  | string     | null: false                    |
+| building      | string     |                                |
+| phone_number  | string     | null: false                    |
 
 ### Association
 
-- belongs_to :user
-- has_one :order
+- belongs_to :order
 - has_one_active_hash :prefecture
