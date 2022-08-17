@@ -3,12 +3,13 @@ require 'rails_helper'
 RSpec.describe Product, type: :model do
   before do
     @product = FactoryBot.build(:product)
-    @product.image = fixture_file_upload('app/assets/images/star.png')
+    @user = FactoryBot.build(:user)
   end
 
   describe '商品出品機能' do
     context '出品できる場合' do
       it 'すべての項目が入力されていると出品できること' do
+        @product.valid?
         expect(@product).to be_valid
       end
     end
@@ -78,6 +79,11 @@ RSpec.describe Product, type: :model do
         @product.price = '1,000'
         @product.valid?
         expect(@product.errors.full_messages).to include('Price is not a number')
+      end
+      it 'ユーザー情報が紐付いていなければ出品できないこと' do
+        @product.user = nil
+        @product.valid?
+        expect(@product.errors.full_messages).to include("User must exist")
       end
     end
   end

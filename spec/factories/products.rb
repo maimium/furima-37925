@@ -8,7 +8,8 @@ FactoryBot.define do
     delivery_charge_id { Faker::Number.between(from: 2, to: 3) }
     prefecture_id { Faker::Number.between(from: 2, to: 48) }
     delivery_days_id { Faker::Number.between(from: 2, to: 4) }
+    image { Rack::Test::UploadedFile.new(File.join(Rails.root,'app/assets/images/star.png'))}
+
     association :user
-    image { '' }
   end
 end
