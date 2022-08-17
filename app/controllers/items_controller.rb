@@ -1,5 +1,2 @@
 class ItemsController < ApplicationController
-
-
-  
 end
