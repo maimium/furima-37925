@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
-  before_action :move_to_index, except: :index
+  before_action :move_to_index, except: [:index, :show]
 
   def index
     @products = Product.all.order(created_at: :desc)
@@ -17,6 +17,10 @@ class ProductsController < ApplicationController
     else
       render action: :new
     end
+  end
+
+  def show
+    @product = Product.find(params[:id])
   end
 
   private
