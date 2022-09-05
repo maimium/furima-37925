@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
+  before_action :product_set, only: [:index, :create, :non_purchased_item]
   before_action :authenticate_user!
   before_action :non_purchased_item, only: [:index, :create]
-  before_action :product_set, only: [:index, :create, :non_purchased_item]
 
   def index
     @order_address = OrderAddress.new
