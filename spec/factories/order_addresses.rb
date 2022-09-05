@@ -4,7 +4,6 @@ FactoryBot.define do
       person { Gimei.name }
     end
 
-    user_id { Faker::Number.number(digits: 1) }
     post_code { '123-4567' }
     prefecture_id { Faker::Number.between(from: 2, to: 48) }
     city { Gimei.address.city.kanji }
@@ -12,6 +11,5 @@ FactoryBot.define do
     building { '建物名' }
     phone_number { Faker::Number.number(digits: 10,digits: 11) }
     token { 'qwertyuiopasdfghjkl1234' }
-
   end
 end

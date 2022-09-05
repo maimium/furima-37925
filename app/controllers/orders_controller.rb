@@ -1,18 +1,13 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :non_purchased_item, only: [:index, :create]
+  before_action :product_set, only: [:index, :create, :non_purchased_item]
 
   def index
-    @product = Product.find(params[:product_id])
-    @order_address = OrderAddress.new
-  end
-
-  def new
     @order_address = OrderAddress.new
   end
 
   def create
-    @product = Product.find(params[:product_id])
     @order_address = OrderAddress.new(order_params)
     if @order_address.valid?
       pay_item
@@ -25,8 +20,12 @@ class OrdersController < ApplicationController
 
   private
 
+  def product_set
+    @product = Product.find(params[:product_id])
+  end
+
   def order_params
-    params.require(:order_address).permit(:user_id, :post_code, :prefecture_id, :city, :house_number, :building, :phone_number).merge(user_id: current_user.id, product_id: @product.id, token: params[:token], authenticity_token: params[:authenticity_token])
+    params.require(:order_address).permit(:post_code, :prefecture_id, :city, :house_number, :building, :phone_number).merge(user_id: current_user.id, product_id: @product.id, token: params[:token], authenticity_token: params[:authenticity_token])
   end
 
   def pay_item
@@ -39,7 +38,6 @@ class OrdersController < ApplicationController
   end
 
   def non_purchased_item
-    @product = Product.find(params[:product_id])
     redirect_to root_path if current_user.id == @product.user_id || @product.order.present?
   end
 
