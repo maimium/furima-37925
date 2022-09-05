@@ -5,11 +5,11 @@ class OrderAddress
   attr_accessor :token
 
   with_options presence: true do
-    validates :post_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/ }
+    validates :post_code,    format: { with: /\A[0-9]{3}-[0-9]{4}\z/, allow_blank: true}
     validates :prefecture_id, numericality: { other_than: 1, message: "isn't selected" }
     validates :city
     validates :house_number
-    validates :phone_number, format: { with:	/\A\d{10,11}\z/ }
+    validates :phone_number, format: { with: /\A\d{10,11}\z/ }
     validates :token
     validates :user_id
     validates :product_id

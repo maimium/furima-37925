@@ -24,8 +24,7 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.post_code = ''
         @order_address.valid?
         expect(@order_address.errors.full_messages)
-        .to include("Post code can't be blank",
-                    "Post code is invalid")
+        .to include("Post code can't be blank")
       end
       it '郵便番号にハイフンが含まれていないと購入できないこと' do
         @order_address.post_code = '1234567'
