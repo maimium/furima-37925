@@ -24,7 +24,9 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    unless @product.user == current_user
+    if @product.order.present?
+      redirect_to root_path
+    else @product.user =! current_user
       redirect_to root_path
     end
   end
