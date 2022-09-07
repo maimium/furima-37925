@@ -27,7 +27,6 @@ class ProductsController < ApplicationController
     if @product.order.present?
       redirect_to root_path
     else @product.user =! current_user
-      redirect_to root_path
     end
   end
 
