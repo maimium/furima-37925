@@ -6,13 +6,13 @@ class OrderAddress
 
   with_options presence: true do
     validates :post_code,    format: { with: /\A[0-9]{3}-[0-9]{4}\z/, allow_blank: true}
-    validates :prefecture_id, numericality: { other_than: 1, message: "isn't selected" }
+    validates :prefecture_id, numericality: { other_than: 1, message: "を選択してください" }
     validates :city
     validates :house_number
     validates :phone_number, format: { with: /\A\d{10,11}\z/ }
-    validates :token
-    validates :user_id
-    validates :product_id
+    validates :token       ,presence:{ message: "を全て入力してください" }
+    validates :user_id     ,presence:{ message: "が紐づいていません" }
+    validates :product_id  ,presence:{ message: "が紐づいていません" }
   end
 
   def save
