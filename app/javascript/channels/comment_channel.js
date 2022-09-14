@@ -19,7 +19,7 @@ if(location.pathname.match(/\/products\/\d/)){
     received(data) {
       const html = `
         <div class="comment-content">
-        <a href="#" class="comment-user">${data.comment.nickname}</a>
+        <a href="#" class="comment-user">${data.user.nickname}</a>
         <p>${data.comment.text}</p>
         </div>`
       const comments = document.getElementById("comments")
