@@ -4,6 +4,7 @@ class Product < ApplicationRecord
   belongs_to :user
   has_one :order
   has_one_attached :image
+  has_many :comments
 
   belongs_to_active_hash :category
   belongs_to_active_hash :condition

@@ -156,6 +156,22 @@
   resize: none;
 }
 
+.comment-user {
+  padding: 10px;
+  font-size: 14px;
+  margin: 10px 0px;
+  text-align: left;
+  color: #3CCACE;
+}
+
+.comment-content {
+  padding: 10px;
+  font-size: 14px;
+  margin: 10px 0px;
+  text-align: left;
+  color: #666666;
+}
+
 .comment-warn {
   padding: 10px;
   font-size: 14px;
