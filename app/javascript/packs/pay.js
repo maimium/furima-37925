@@ -1,4 +1,6 @@
-  const pay = () => {
+if(location.pathname.match(/order/)){
+
+const pay = () => {
     Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);
     const submit = document.getElementById("button");
     submit.addEventListener("click",(e) => {
@@ -35,3 +37,5 @@
 
   
 window.addEventListener("load", pay);
+
+}
